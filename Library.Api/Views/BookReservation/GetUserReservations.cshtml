@@ -1,0 +1,68 @@
+﻿@using Library.Application.DTO.BookReservation
+@model List<BookReservationDto>
+
+<div class="container">
+    <div class="col-12">
+        <h2>@TempData["Title"]</h2>
+        @if (TempData["Status"] is not null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Status"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        <a class="btn btn-primary m-3" asp-controller="Book" asp-action="GetAllBooks">Wróć do listy</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Wypożyczający</th>
+                    <th scope="col">Data rezerwacji</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="bg-light text-center">
+                            Brak wpisów
+                        </td>
+
+                    </tr>
+                }
+                else
+                {
+                    int i = 0;
+                    @foreach (var reservation in Model)
+                    {
+
+                        i++;
+                        <tr>
+                            <th scope="row">
+                                @i
+                            </th>
+                            <td>@reservation.Book.Title</td>
+                            <td>@reservation.Book.Author</td>
+                            <td>@reservation.ApplicationUser.Email</td>
+                            <td>@reservation.ReservationDate.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-danger" asp-controller="BookReservation" asp-action="UserDeleteReservation" asp-route-reservationId="@reservation.Id">Usuń</a>
+                            </td>
+
+                        </tr>
+
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+

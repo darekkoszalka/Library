@@ -1,0 +1,18 @@
+﻿@model BookDto
+
+<div class="row">
+    <h2>@TempData["Title"]</h2>
+
+    <div class="col-sm-8 offset-sm-2">
+        <h3>@Model.Title</h3>
+        <h4>@Model.Author</h4>
+        <small>Data wydania @Model.PublishDate.ToString("dd/MM/yyyy")</small>
+        <p>@Model.Description</p>
+        <div class="row">
+            <div class="col-sm-4">
+                <a asp-controller="Book" asp-action="GetAllBooks" class="btn btn-primary">Wróć do listy</a>
+            </div>
+
+        </div>
+    </div>
+</div>

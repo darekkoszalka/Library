@@ -1,0 +1,50 @@
+﻿@model RegisterUserDto
+
+<div class="jumbotron jumbotron-fluid" style="min-height: 100vh;">
+    <div class="container">
+        <h2>@TempData["Title"]</h2>
+        <form method="post" autocomplete="off">
+            <div class="row form-group">
+                <div class="col-8 offset-2">
+                    <div class="card">
+                        <div class="card-body px-lg-5 pt-2">
+                            <h3 class="col-12 text-center py-2">Zarejestruj się</h3>
+
+                            <div class="form-row py-2">
+                                <div class="col">
+                                    <input type="text" asp-for="FirstName" placeholder="Imię" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="col">
+                                    <input type="text" asp-for="LastName" placeholder="Nazwisko" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <input type="email" asp-for="Email" placeholder="Email" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <input type="password" asp-for="Password" placeholder="Hasło" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <input type="password" asp-for="ConfirmPassword" placeholder="Powtórz hasło" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-success my-2">Zarejestruj się</button>
+                            <a class="btn btn-primary ml=4 text-white" onclick="history.back()">Anuluj</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+

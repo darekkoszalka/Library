@@ -1,0 +1,46 @@
+﻿@model LoginUserDto
+
+<div class="jumbotron jumbotron-fluid" style="min-height: 100vh;">
+    <div class="container">
+        <h2>@TempData["Title"]</h2>
+        <form method="post" autocomplete="off">
+            <div class="py-4 my-2">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12 col-md-8 col-lg-6" style="margin: 0 auto;">
+                    <div class="card">
+                        <div class="card-body px-lg-5 pt-2">
+                            <h3 class="col-12 text-center py-2">Zaloguj się</h3>
+                            <hr />
+
+                            <div class="py-2">
+                                <input type="email" asp-for="Email" placeholder="Email" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <input type="password" asp-for="Password" placeholder="hasło" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" asp-for="RememberMe" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Zapamiętaj mnie
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-success my-2" style="font-size: 1rem;">Zaloguj się</button>
+                            <a class="btn btn-primary ml=4 text-white" onclick="history.back()" style="font-size: 1rem;">Anuluj</a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+</div>

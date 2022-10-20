@@ -1,0 +1,39 @@
+﻿@model BookDto
+
+<div class="container mt-4 p-2">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>@TempData["Title"]</h2>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" class="form-control" type="hidden" />
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Author" class="control-label"></label>
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="PublishDate" class="control-label"></label>
+                    <input type="date" asp-for="PublishDate" class="form-control" />
+                    <span asp-validation-for="PublishDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2">
+                    <input type="submit" value="Zapisz" class="btn btn-primary" asp-action="Update" />
+                    <a asp-controller="Book" asp-action="GetAllBooks" class="btn btn-success">Anuluj</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

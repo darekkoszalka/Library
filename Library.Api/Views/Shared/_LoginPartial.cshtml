@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Library.Domain.Entities
+@using Library.Infrastructure.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject LibraryDbContext context
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+            var user = context.ApplicationUsers
+                .FirstOrDefault(u => u.Email == User.Identity.Name);
+
+        <li class="nav-item">
+            <a class="nav-link">Witaj  @user.FirstName</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="" asp-controller="User" asp-action="LogOut" method="post">
+                <button type="submit" class="nav-link btn btn-link">Wyloguj się</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">Zaloguj się</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Register">Zarejestruj sie</a>
+        </li>
+    }
+</ul>
+
